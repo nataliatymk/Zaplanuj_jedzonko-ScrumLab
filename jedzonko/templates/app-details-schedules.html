@@ -1,0 +1,78 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">SZCZEGÓŁY PLANU</h3>
+        </div>
+        <div class="col d-flex justify-content-end mb-2 noPadding">
+            <form action="" method="POST">
+                {% csrf_token %}
+            <a href="" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4" style="margin-right: 10px; height: 33px"><button type="submit" name="add_recipe" style="color: white; background-color: transparent; border-color: transparent;">Dodaj przepis do listy</button></a>
+            </form>
+            <a href="{% url 'PlanView' %}" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Powrót</a>
+        </div>
+    </div>
+
+    <div class="schedules-content">
+        <div class="schedules-content-header">
+            <div class="form-group row">
+                                <span class="col-sm-2 label-size col-form-label">
+                                    Nazwa Planu
+                                </span>
+                <div class="col-sm-10">
+                    <p class="schedules-text">{{ plan.name }}</p>
+                </div>
+            </div>
+            <div class="form-group row">
+                                <span class="col-sm-2 label-size col-form-label">
+                                    Opis planu
+                                </span>
+                <div class="col-sm-10">
+                    <p class="schedules-text">
+                        {{ plan.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% for key_off, object in counter_obj.items %}
+
+        <table class="table">
+            <thead>
+            <tr class="d-flex">
+                <th class="col-2">{{ object.day_name.show_day_name }}</th>
+                <th class="col-7"></th>
+                <th class="col-1"></th>
+                <th class="col-2"></th>
+            </tr>
+            </thead>
+            {% for dish in recipeplan %}
+            {% if dish.day_name.id == object.day_name.id %}
+            <tbody class="text-color-lighter">
+            <tr class="d-flex">
+                <td class="col-2">{{ dish.meal_name }}</td>
+                <td class="col-7">{{ dish.recipe.show_name }}</td>
+
+                <td class="col-1 center">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <a style="height: 40px;" href="" class="btn btn-danger rounded-0 text-light m-1"><button name="delete_recipe" value={{ dish.id }} type="submit" style="color: white; background-color: transparent; border-color: transparent;">Usuń</button></a>
+                    </form>
+                </td>
+                <td class="col-2 center">
+                    <a href="{% url 'RecipeDetailView' dish.recipe_id %}"
+
+                       class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
+                </td>
+            </tr>
+            </tbody>
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+
+    <div class="row border-bottom border-3 p-1 m-1">
+        <div class="col noPadding">
+            <h3 class="color-header text-uppercase">LISTA PLANÓW</h3>
+        </div>
+        <div class="col d-flex justify-content-end mb-2 noPadding">
+            <a href="/plan/add"
+               class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Dodaj
+                plan</a>
+        </div>
+    </div>
+
+
+
+    <div class="schedules-content">
+        <table class="table border-bottom">
+            <thead>
+            <tr class="d-flex">
+                <th class="col-1">ID</th>
+                <th class="col-2">NAZWA</th>
+                <th class="col-7">OPIS</th>
+                <th class="col-2 center">AKCJE</th>
+            </tr>
+            </thead>
+            <tbody class="text-color-lighter">
+
+            {% for object in page_objects %}
+
+            <tr class="d-flex">
+                <td class="col-1">{{ page_objects.start_index|add:forloop.counter0}}</td>
+                <td class="col-2">{{ object.name }}</td>
+                <td class="col-7">
+                    {{ object.description }}
+                </td>
+                <td class="col-2 d-flex align-items-center justify-content-center flex-wrap">
+                    <a href={% url 'PlanEditView' object.id %}
+                       class="btn btn-warning rounded-0 text-light m-1">Edytuj</a>
+                    <a href={% url 'PlanDetailView' object.id %}
+                       class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+
+            </tbody>
+        </table>
+
+                <div class="pagination">
+                            <span class="step-links">
+                                {% if page_objects.has_previous %}
+                                    <a class="page_counter" href="?page={{ page_objects.previous_page_number }}">< poprzednia</a>
+                                {% endif %} |
+                            {% for num_page in page_objects.paginator.page_range %}
+                                <span class="current">
+                                    {% if page_objects.number == num_page %}
+                                    <a class="page_counter" href="?page={{ num_page }}">
+                                        <b>{{ num_page }}</b></a> |
+                                    {% else %}
+                                        <a class="page_counter" href="?page={{ num_page }}">
+                                        {{ num_page }}</a> |
+                                    {% endif %}
+                                </span>
+                            {% endfor %}
+                            {% if page_objects.has_next %}
+                                <a class="page_counter" href="?page={{ page_objects.next_page_number }}">następna ></a>
+                            {% endif %}
+                            </span>
+                        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}
