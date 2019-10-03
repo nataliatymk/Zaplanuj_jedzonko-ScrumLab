@@ -4,3 +4,16 @@ Pani Maria Iksińska napisała książkę kucharską, która stała się bestsel
 
 Pani Maria chce rozwijać swój biznes, a do zrealizowania swoich celów potrzebuje strony-wizytówki oraz prostej aplikacji do planowania posiłków.
 
+##Technologie
+
+PostgreSQL, Django
+
+## Project's describe 
+
+Mrs Maria Iksińska wrote a cookbook, which became the bestseller on a cookbook market in Poland. She asked us to prepare a meal planning application for her readers. Mrs Iksińska's book promotes healthy food and emphasizes the importance of meal planning. She wants to start conducting meal planning workshops for her readers all over the country.
+
+Mrs. Maria wants to develop her bussines, to realize her achivemnts she needs website - bussines card and simply application for planning meals
+
+##Technologies
+
+PostgreSQL, Django
