@@ -4,7 +4,7 @@ Pani Maria Iksińska napisała książkę kucharską, która stała się bestsel
 
 Pani Maria chce rozwijać swój biznes, a do zrealizowania swoich celów potrzebuje strony-wizytówki oraz prostej aplikacji do planowania posiłków.
 
-<b>Technologie:</b> PostgreSQL, Django
+<b>Technologie:</b> Django, PostgreSQL
 
 
 ## Project's description 
@@ -13,6 +13,6 @@ Mrs Maria Iksińska wrote a cookbook, which became the bestseller on a cookbook 
 
 Mrs. Maria wants to grow her business and to achieve her goals she needs a website - her business card - and simple meal planning application.
 
-<b>Technologies:</b> PostgreSQL, Django
+<b>Technologies:</b> Django, PostgreSQL
 
 
